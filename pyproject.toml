@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "entra-user-directory"
+version = "1.0.0"
+description = "Flask + SQLite viewer and PDF reporter for a Microsoft Entra / M365 user export (fictional demo data only)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "enonymous1" }]
+dependencies = [
+    "Flask>=3.0,<4",
+    "Flask-SQLAlchemy>=3.1,<4",
+    "reportlab>=4.0,<5",
+    "matplotlib>=3.8,<4",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+ums = "app.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,4 @@
+Id,Display Name,Given Name,Surname,User Principal Name,Mail,Job Title,Office Location,Business Phones,Mobile Phone,Is Resource Account,Account Enabled,User Type,Creation Type,External User State
+00000000-0000-0000-0000-000000000001,Alex Example,Alex,Example,alex@example.org,alex@example.org,Analyst,Main Office,,555-010-1001,FALSE,TRUE,Member,,
+00000000-0000-0000-0000-000000000002,Sam Sample,Sam,Sample,sam@example.org,sam@example.org,Manager,Main Office,,555-010-1002,FALSE,TRUE,Member,,
+00000000-0000-0000-0000-000000000009,Pat Guest,Pat,Guest,pat_guestmail.com#EXT#@example.org,pat@example.org,Consultant,,, ,FALSE,TRUE,Guest,Invitation,Accepted

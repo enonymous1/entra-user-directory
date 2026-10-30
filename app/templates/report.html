@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>User Analysis Report</h1>
+  <table>
+    <tr><th>Total users</th><td>{{ summary.total }}</td></tr>
+    <tr><th>Members</th><td>{{ summary.members }}</td></tr>
+    <tr><th>Guests</th><td>{{ summary.guests }}</td></tr>
+    <tr><th>Licensed</th><td>{{ summary.licensed }}</td></tr>
+    <tr><th>Unlicensed</th><td>{{ summary.unlicensed }}</td></tr>
+  </table>
+  <h2>Licenses</h2>
+  <ul>
+    {% for name, count in summary.license_counts.items() %}<li>{{ name }}: {{ count }}</li>{% else %}<li>No license data.</li>{% endfor %}
+  </ul>
+  <h2>Users created per month</h2>
+  <ul>
+    {% for month, count in summary.monthly_counts.items() %}<li>{{ month }}: {{ count }}</li>{% else %}<li>No creation dates.</li>{% endfor %}
+  </ul>
+  <p><a href="/report.pdf">Download PDF</a> &middot; <a href="/report/internal.csv">Members CSV</a> &middot; <a href="/report/external.csv">Guests CSV</a></p>
+{% endblock %}

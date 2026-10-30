@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Users</h1>
+  <form method="get" action="/users">
+    <input type="search" name="q" value="{{ q }}" placeholder="Search name or email">
+    <select name="kind">
+      <option value="" {% if kind == "" %}selected{% endif %}>All</option>
+      <option value="member" {% if kind == "member" %}selected{% endif %}>Members</option>
+      <option value="guest" {% if kind == "guest" %}selected{% endif %}>Guests</option>
+    </select>
+    <input type="submit" value="Search">
+  </form>
+  <div class="view-toggle">
+    <button class="view-button" id="listViewButton">As a List</button>
+    <button class="view-button" id="cardViewButton">As Cards</button>
+  </div>
+  <div id="userList">
+    <ul>
+      {% for user in pagination.items %}
+        <li><a href="/user/{{ user.id }}">{{ user.display_name }}</a> - {{ user.mail or user.user_principal_name }}</li>
+      {% else %}
+        <li>No users found.</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div id="userCards" class="user-cards" style="display: none;">
+    {% for user in pagination.items %}
+      <div class="user-card">
+        <h3><a href="/user/{{ user.id }}">{{ user.display_name }}</a></h3>
+        <p>Email: {{ user.mail or user.user_principal_name }}</p>
+        <p>Job Title: {{ user.job_title or "" }}</p>
+        <p>Office Location: {{ user.office_location or "" }}</p>
+      </div>
+    {% endfor %}
+  </div>
+  <p>Page {{ pagination.page }} of {{ pagination.pages or 1 }} ({{ pagination.total }} users).</p>
+  {% if pagination.has_prev %}<a href="/users?q={{ q }}&kind={{ kind }}&page={{ pagination.prev_num }}">Previous</a>{% endif %}
+  {% if pagination.has_next %}<a href="/users?q={{ q }}&kind={{ kind }}&page={{ pagination.next_num }}">Next</a>{% endif %}
+{% endblock %}
+{% block scripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var list = document.getElementById("userList");
+    var cards = document.getElementById("userCards");
+    document.getElementById("listViewButton").onclick = function() { list.style.display = "block"; cards.style.display = "none"; };
+    document.getElementById("cardViewButton").onclick = function() { list.style.display = "none"; cards.style.display = "flex"; };
+  });
+</script>
+{% endblock %}

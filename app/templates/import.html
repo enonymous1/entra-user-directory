@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Import users</h1>
+  <p>Upload an Entra admin export or a Graph export. Importing the same file twice updates existing users instead of failing.</p>
+  <form method="post" enctype="multipart/form-data" action="/import">
+    <input type="file" name="csv_file" accept=".csv" required>
+    <input type="submit" value="Import">
+  </form>
+{% endblock %}

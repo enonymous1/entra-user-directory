@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{ user.display_name }}</h1>
+  <table>
+    <tr><th>Email</th><td>{{ user.mail or user.user_principal_name }}</td></tr>
+    <tr><th>User principal name</th><td>{{ user.user_principal_name }}</td></tr>
+    <tr><th>Job title</th><td>{{ user.job_title or "" }}</td></tr>
+    <tr><th>Department</th><td>{{ user.department or "" }}</td></tr>
+    <tr><th>Office location</th><td>{{ user.office_location or "" }}</td></tr>
+    <tr><th>User type</th><td>{{ user.user_type or "" }}</td></tr>
+    <tr><th>Account enabled</th><td>{{ user.account_enabled }}</td></tr>
+    <tr><th>Licenses</th><td>{{ user.licenses or "" }}</td></tr>
+  </table>
+  <p><a href="/users">Back to users</a></p>
+{% endblock %}

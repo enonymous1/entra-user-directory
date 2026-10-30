@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Welcome to the User Management System</h1>
+  <p>{{ total }} users in the database, {{ guests }} of them guests.</p>
+  <p><a href="/users">Browse users</a> &middot; <a href="/import">Import a CSV</a> &middot; <a href="/report">View the report</a></p>
+  <p>Demo data only: run <code>ums seed</code> to load the fictional sample, or import your own Entra export.</p>
+{% endblock %}
